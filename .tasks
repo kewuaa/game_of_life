@@ -1,0 +1,3 @@
+[project-build]
+command=python <root>/setup.py build_ext
+cwd=<root>

@@ -63,7 +63,9 @@ cdef class GameOfLife:
                     for l in range(-1, 2):
                         row = i + k
                         col = j + l
-                        if 0 <= row < self._N and 0 <= col < self._N:
+                        # rol and col are unsigned
+                        # not need to compare with zeor
+                        if row < self._N and col < self._N:
                             if self._data[row + col * self._N]:
                                 num += 1
                 index = i + j * self._N

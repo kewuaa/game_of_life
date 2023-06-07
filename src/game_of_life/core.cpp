@@ -4767,7 +4767,7 @@ static PyObject *__pyx_pf_12game_of_life_4core_10GameOfLife_6update(struct __pyx
  *                     for l in range(-1, 2):
  *                         row = i + k             # <<<<<<<<<<<<<<
  *                         col = j + l
- *                         if 0 <= row < self._N and 0 <= col < self._N:
+ *                         if row < self._N and col < self._N:
  */
           __pyx_v_row = (__pyx_v_i + __pyx_v_k);
 
@@ -4775,7 +4775,7 @@ static PyObject *__pyx_pf_12game_of_life_4core_10GameOfLife_6update(struct __pyx
  *                     for l in range(-1, 2):
  *                         row = i + k
  *                         col = j + l             # <<<<<<<<<<<<<<
- *                         if 0 <= row < self._N and 0 <= col < self._N:
+ *                         if row < self._N and col < self._N:
  *                             if self._data[row + col * self._N]:
  */
           __pyx_v_col = (__pyx_v_j + __pyx_v_l);
@@ -4783,30 +4783,24 @@ static PyObject *__pyx_pf_12game_of_life_4core_10GameOfLife_6update(struct __pyx
           /* "game_of_life/core.pyx":66
  *                         row = i + k
  *                         col = j + l
- *                         if 0 <= row < self._N and 0 <= col < self._N:             # <<<<<<<<<<<<<<
+ *                         if row < self._N and col < self._N:             # <<<<<<<<<<<<<<
  *                             if self._data[row + col * self._N]:
  *                                 num += 1
  */
-          __pyx_t_10 = (0 <= __pyx_v_row);
-          if (__pyx_t_10) {
-            __pyx_t_10 = (__pyx_v_row < __pyx_v_self->_N);
-          }
+          __pyx_t_10 = (__pyx_v_row < __pyx_v_self->_N);
           if (__pyx_t_10) {
           } else {
             __pyx_t_9 = __pyx_t_10;
             goto __pyx_L12_bool_binop_done;
           }
-          __pyx_t_10 = (0 <= __pyx_v_col);
-          if (__pyx_t_10) {
-            __pyx_t_10 = (__pyx_v_col < __pyx_v_self->_N);
-          }
+          __pyx_t_10 = (__pyx_v_col < __pyx_v_self->_N);
           __pyx_t_9 = __pyx_t_10;
           __pyx_L12_bool_binop_done:;
           if (__pyx_t_9) {
 
             /* "game_of_life/core.pyx":67
  *                         col = j + l
- *                         if 0 <= row < self._N and 0 <= col < self._N:
+ *                         if row < self._N and col < self._N:
  *                             if self._data[row + col * self._N]:             # <<<<<<<<<<<<<<
  *                                 num += 1
  *                 index = i + j * self._N
@@ -4815,7 +4809,7 @@ static PyObject *__pyx_pf_12game_of_life_4core_10GameOfLife_6update(struct __pyx
             if (__pyx_t_9) {
 
               /* "game_of_life/core.pyx":68
- *                         if 0 <= row < self._N and 0 <= col < self._N:
+ *                         if row < self._N and col < self._N:
  *                             if self._data[row + col * self._N]:
  *                                 num += 1             # <<<<<<<<<<<<<<
  *                 index = i + j * self._N
@@ -4825,7 +4819,7 @@ static PyObject *__pyx_pf_12game_of_life_4core_10GameOfLife_6update(struct __pyx
 
               /* "game_of_life/core.pyx":67
  *                         col = j + l
- *                         if 0 <= row < self._N and 0 <= col < self._N:
+ *                         if row < self._N and col < self._N:
  *                             if self._data[row + col * self._N]:             # <<<<<<<<<<<<<<
  *                                 num += 1
  *                 index = i + j * self._N
@@ -4835,7 +4829,7 @@ static PyObject *__pyx_pf_12game_of_life_4core_10GameOfLife_6update(struct __pyx
             /* "game_of_life/core.pyx":66
  *                         row = i + k
  *                         col = j + l
- *                         if 0 <= row < self._N and 0 <= col < self._N:             # <<<<<<<<<<<<<<
+ *                         if row < self._N and col < self._N:             # <<<<<<<<<<<<<<
  *                             if self._data[row + col * self._N]:
  *                                 num += 1
  */

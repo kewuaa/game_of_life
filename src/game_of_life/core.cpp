@@ -2312,9 +2312,6 @@ static CYTHON_INLINE size_t __Pyx_PyInt_As_size_t(PyObject *);
 /* CIntFromPy.proto */
 static CYTHON_INLINE int __Pyx_PyInt_As_int(PyObject *);
 
-/* CIntToPy.proto */
-static CYTHON_INLINE PyObject* __Pyx_PyInt_From_unsigned_char(unsigned char value);
-
 /* FormatTypeName.proto */
 #if CYTHON_COMPILING_IN_LIMITED_API
 typedef PyObject *__Pyx_TypeName;
@@ -4770,7 +4767,7 @@ static PyObject *__pyx_pf_12game_of_life_4core_10GameOfLife_6update(struct __pyx
  *                     for l in range(-1, 2):
  *                         row = i + k             # <<<<<<<<<<<<<<
  *                         col = j + l
- *                         if 0 < row < self._N and 0 < col < self._N:
+ *                         if 0 <= row < self._N and 0 <= col < self._N:
  */
           __pyx_v_row = (__pyx_v_i + __pyx_v_k);
 
@@ -4778,7 +4775,7 @@ static PyObject *__pyx_pf_12game_of_life_4core_10GameOfLife_6update(struct __pyx
  *                     for l in range(-1, 2):
  *                         row = i + k
  *                         col = j + l             # <<<<<<<<<<<<<<
- *                         if 0 < row < self._N and 0 < col < self._N:
+ *                         if 0 <= row < self._N and 0 <= col < self._N:
  *                             if self._data[row + col * self._N]:
  */
           __pyx_v_col = (__pyx_v_j + __pyx_v_l);
@@ -4786,11 +4783,11 @@ static PyObject *__pyx_pf_12game_of_life_4core_10GameOfLife_6update(struct __pyx
           /* "game_of_life/core.pyx":66
  *                         row = i + k
  *                         col = j + l
- *                         if 0 < row < self._N and 0 < col < self._N:             # <<<<<<<<<<<<<<
+ *                         if 0 <= row < self._N and 0 <= col < self._N:             # <<<<<<<<<<<<<<
  *                             if self._data[row + col * self._N]:
  *                                 num += 1
  */
-          __pyx_t_10 = (0 < __pyx_v_row);
+          __pyx_t_10 = (0 <= __pyx_v_row);
           if (__pyx_t_10) {
             __pyx_t_10 = (__pyx_v_row < __pyx_v_self->_N);
           }
@@ -4799,7 +4796,7 @@ static PyObject *__pyx_pf_12game_of_life_4core_10GameOfLife_6update(struct __pyx
             __pyx_t_9 = __pyx_t_10;
             goto __pyx_L12_bool_binop_done;
           }
-          __pyx_t_10 = (0 < __pyx_v_col);
+          __pyx_t_10 = (0 <= __pyx_v_col);
           if (__pyx_t_10) {
             __pyx_t_10 = (__pyx_v_col < __pyx_v_self->_N);
           }
@@ -4809,132 +4806,132 @@ static PyObject *__pyx_pf_12game_of_life_4core_10GameOfLife_6update(struct __pyx
 
             /* "game_of_life/core.pyx":67
  *                         col = j + l
- *                         if 0 < row < self._N and 0 < col < self._N:
+ *                         if 0 <= row < self._N and 0 <= col < self._N:
  *                             if self._data[row + col * self._N]:             # <<<<<<<<<<<<<<
  *                                 num += 1
- *                         index = i + j * self._N
+ *                 index = i + j * self._N
  */
             __pyx_t_9 = ((__pyx_v_self->_data[(__pyx_v_row + (__pyx_v_col * __pyx_v_self->_N))]) != 0);
             if (__pyx_t_9) {
 
               /* "game_of_life/core.pyx":68
- *                         if 0 < row < self._N and 0 < col < self._N:
+ *                         if 0 <= row < self._N and 0 <= col < self._N:
  *                             if self._data[row + col * self._N]:
  *                                 num += 1             # <<<<<<<<<<<<<<
- *                         index = i + j * self._N
- *                         if (num == 3 and not self._data[index]) \
+ *                 index = i + j * self._N
+ *                 if (self._data[index] == 0 and num == 3) \
  */
               __pyx_v_num = (__pyx_v_num + 1);
 
               /* "game_of_life/core.pyx":67
  *                         col = j + l
- *                         if 0 < row < self._N and 0 < col < self._N:
+ *                         if 0 <= row < self._N and 0 <= col < self._N:
  *                             if self._data[row + col * self._N]:             # <<<<<<<<<<<<<<
  *                                 num += 1
- *                         index = i + j * self._N
+ *                 index = i + j * self._N
  */
             }
 
             /* "game_of_life/core.pyx":66
  *                         row = i + k
  *                         col = j + l
- *                         if 0 < row < self._N and 0 < col < self._N:             # <<<<<<<<<<<<<<
+ *                         if 0 <= row < self._N and 0 <= col < self._N:             # <<<<<<<<<<<<<<
  *                             if self._data[row + col * self._N]:
  *                                 num += 1
- */
-          }
-
-          /* "game_of_life/core.pyx":69
- *                             if self._data[row + col * self._N]:
- *                                 num += 1
- *                         index = i + j * self._N             # <<<<<<<<<<<<<<
- *                         if (num == 3 and not self._data[index]) \
- *                                 or ((num < 3 or num > 4) and self._data[index]):
- */
-          __pyx_v_index = (__pyx_v_i + (__pyx_v_j * __pyx_v_self->_N));
-
-          /* "game_of_life/core.pyx":70
- *                                 num += 1
- *                         index = i + j * self._N
- *                         if (num == 3 and not self._data[index]) \             # <<<<<<<<<<<<<<
- *                                 or ((num < 3 or num > 4) and self._data[index]):
- *                             need_update_index.push_back(index)
- */
-          __pyx_t_10 = (__pyx_v_num == 3);
-          if (!__pyx_t_10) {
-            goto __pyx_L17_next_or;
-          } else {
-          }
-          __pyx_t_10 = (!((__pyx_v_self->_data[__pyx_v_index]) != 0));
-          if (!__pyx_t_10) {
-          } else {
-            __pyx_t_9 = __pyx_t_10;
-            goto __pyx_L16_bool_binop_done;
-          }
-          __pyx_L17_next_or:;
-
-          /* "game_of_life/core.pyx":71
- *                         index = i + j * self._N
- *                         if (num == 3 and not self._data[index]) \
- *                                 or ((num < 3 or num > 4) and self._data[index]):             # <<<<<<<<<<<<<<
- *                             need_update_index.push_back(index)
- *         for i in range(need_update_index.size()):
- */
-          __pyx_t_10 = (__pyx_v_num < 3);
-          if (!__pyx_t_10) {
-          } else {
-            goto __pyx_L19_next_and;
-          }
-          __pyx_t_10 = (__pyx_v_num > 4);
-          if (__pyx_t_10) {
-          } else {
-            __pyx_t_9 = __pyx_t_10;
-            goto __pyx_L16_bool_binop_done;
-          }
-          __pyx_L19_next_and:;
-          __pyx_t_10 = ((__pyx_v_self->_data[__pyx_v_index]) != 0);
-          __pyx_t_9 = __pyx_t_10;
-          __pyx_L16_bool_binop_done:;
-
-          /* "game_of_life/core.pyx":70
- *                                 num += 1
- *                         index = i + j * self._N
- *                         if (num == 3 and not self._data[index]) \             # <<<<<<<<<<<<<<
- *                                 or ((num < 3 or num > 4) and self._data[index]):
- *                             need_update_index.push_back(index)
- */
-          if (__pyx_t_9) {
-
-            /* "game_of_life/core.pyx":72
- *                         if (num == 3 and not self._data[index]) \
- *                                 or ((num < 3 or num > 4) and self._data[index]):
- *                             need_update_index.push_back(index)             # <<<<<<<<<<<<<<
- *         for i in range(need_update_index.size()):
- *             index = need_update_index[i]
- */
-            try {
-              __pyx_v_need_update_index.push_back(__pyx_v_index);
-            } catch(...) {
-              __Pyx_CppExn2PyErr();
-              __PYX_ERR(0, 72, __pyx_L1_error)
-            }
-
-            /* "game_of_life/core.pyx":70
- *                                 num += 1
- *                         index = i + j * self._N
- *                         if (num == 3 and not self._data[index]) \             # <<<<<<<<<<<<<<
- *                                 or ((num < 3 or num > 4) and self._data[index]):
- *                             need_update_index.push_back(index)
  */
           }
         }
+      }
+
+      /* "game_of_life/core.pyx":69
+ *                             if self._data[row + col * self._N]:
+ *                                 num += 1
+ *                 index = i + j * self._N             # <<<<<<<<<<<<<<
+ *                 if (self._data[index] == 0 and num == 3) \
+ *                         or (self._data[index] > 0 and (num < 3 or num > 4)):
+ */
+      __pyx_v_index = (__pyx_v_i + (__pyx_v_j * __pyx_v_self->_N));
+
+      /* "game_of_life/core.pyx":70
+ *                                 num += 1
+ *                 index = i + j * self._N
+ *                 if (self._data[index] == 0 and num == 3) \             # <<<<<<<<<<<<<<
+ *                         or (self._data[index] > 0 and (num < 3 or num > 4)):
+ *                     need_update_index.push_back(index)
+ */
+      __pyx_t_10 = ((__pyx_v_self->_data[__pyx_v_index]) == 0);
+      if (!__pyx_t_10) {
+        goto __pyx_L17_next_or;
+      } else {
+      }
+      __pyx_t_10 = (__pyx_v_num == 3);
+      if (!__pyx_t_10) {
+      } else {
+        __pyx_t_9 = __pyx_t_10;
+        goto __pyx_L16_bool_binop_done;
+      }
+      __pyx_L17_next_or:;
+
+      /* "game_of_life/core.pyx":71
+ *                 index = i + j * self._N
+ *                 if (self._data[index] == 0 and num == 3) \
+ *                         or (self._data[index] > 0 and (num < 3 or num > 4)):             # <<<<<<<<<<<<<<
+ *                     need_update_index.push_back(index)
+ *         for i in range(need_update_index.size()):
+ */
+      __pyx_t_10 = ((__pyx_v_self->_data[__pyx_v_index]) > 0);
+      if (__pyx_t_10) {
+      } else {
+        __pyx_t_9 = __pyx_t_10;
+        goto __pyx_L16_bool_binop_done;
+      }
+      __pyx_t_10 = (__pyx_v_num < 3);
+      if (!__pyx_t_10) {
+      } else {
+        __pyx_t_9 = __pyx_t_10;
+        goto __pyx_L16_bool_binop_done;
+      }
+      __pyx_t_10 = (__pyx_v_num > 4);
+      __pyx_t_9 = __pyx_t_10;
+      __pyx_L16_bool_binop_done:;
+
+      /* "game_of_life/core.pyx":70
+ *                                 num += 1
+ *                 index = i + j * self._N
+ *                 if (self._data[index] == 0 and num == 3) \             # <<<<<<<<<<<<<<
+ *                         or (self._data[index] > 0 and (num < 3 or num > 4)):
+ *                     need_update_index.push_back(index)
+ */
+      if (__pyx_t_9) {
+
+        /* "game_of_life/core.pyx":72
+ *                 if (self._data[index] == 0 and num == 3) \
+ *                         or (self._data[index] > 0 and (num < 3 or num > 4)):
+ *                     need_update_index.push_back(index)             # <<<<<<<<<<<<<<
+ *         for i in range(need_update_index.size()):
+ *             index = need_update_index[i]
+ */
+        try {
+          __pyx_v_need_update_index.push_back(__pyx_v_index);
+        } catch(...) {
+          __Pyx_CppExn2PyErr();
+          __PYX_ERR(0, 72, __pyx_L1_error)
+        }
+
+        /* "game_of_life/core.pyx":70
+ *                                 num += 1
+ *                 index = i + j * self._N
+ *                 if (self._data[index] == 0 and num == 3) \             # <<<<<<<<<<<<<<
+ *                         or (self._data[index] > 0 and (num < 3 or num > 4)):
+ *                     need_update_index.push_back(index)
+ */
       }
     }
   }
 
   /* "game_of_life/core.pyx":73
- *                                 or ((num < 3 or num > 4) and self._data[index]):
- *                             need_update_index.push_back(index)
+ *                         or (self._data[index] > 0 and (num < 3 or num > 4)):
+ *                     need_update_index.push_back(index)
  *         for i in range(need_update_index.size()):             # <<<<<<<<<<<<<<
  *             index = need_update_index[i]
  *             self._data[index] = 255 - self._data[index]
@@ -4945,7 +4942,7 @@ static PyObject *__pyx_pf_12game_of_life_4core_10GameOfLife_6update(struct __pyx
     __pyx_v_i = __pyx_t_1;
 
     /* "game_of_life/core.pyx":74
- *                             need_update_index.push_back(index)
+ *                     need_update_index.push_back(index)
  *         for i in range(need_update_index.size()):
  *             index = need_update_index[i]             # <<<<<<<<<<<<<<
  *             self._data[index] = 255 - self._data[index]
@@ -9997,44 +9994,6 @@ raise_neg_overflow:
     PyErr_SetString(PyExc_OverflowError,
         "can't convert negative value to int");
     return (int) -1;
-}
-
-/* CIntToPy */
-static CYTHON_INLINE PyObject* __Pyx_PyInt_From_unsigned_char(unsigned char value) {
-#ifdef __Pyx_HAS_GCC_DIAGNOSTIC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wconversion"
-#endif
-    const unsigned char neg_one = (unsigned char) -1, const_zero = (unsigned char) 0;
-#ifdef __Pyx_HAS_GCC_DIAGNOSTIC
-#pragma GCC diagnostic pop
-#endif
-    const int is_unsigned = neg_one > const_zero;
-    if (is_unsigned) {
-        if (sizeof(unsigned char) < sizeof(long)) {
-            return PyInt_FromLong((long) value);
-        } else if (sizeof(unsigned char) <= sizeof(unsigned long)) {
-            return PyLong_FromUnsignedLong((unsigned long) value);
-#ifdef HAVE_LONG_LONG
-        } else if (sizeof(unsigned char) <= sizeof(unsigned PY_LONG_LONG)) {
-            return PyLong_FromUnsignedLongLong((unsigned PY_LONG_LONG) value);
-#endif
-        }
-    } else {
-        if (sizeof(unsigned char) <= sizeof(long)) {
-            return PyInt_FromLong((long) value);
-#ifdef HAVE_LONG_LONG
-        } else if (sizeof(unsigned char) <= sizeof(PY_LONG_LONG)) {
-            return PyLong_FromLongLong((PY_LONG_LONG) value);
-#endif
-        }
-    }
-    {
-        int one = 1; int little = (int)*(unsigned char *)&one;
-        unsigned char *bytes = (unsigned char *)&value;
-        return _PyLong_FromByteArray(bytes, sizeof(unsigned char),
-                                     little, !is_unsigned);
-    }
 }
 
 /* FormatTypeName */

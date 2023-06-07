@@ -63,13 +63,13 @@ cdef class GameOfLife:
                     for l in range(-1, 2):
                         row = i + k
                         col = j + l
-                        if 0 < row < self._N and 0 < col < self._N:
+                        if 0 <= row < self._N and 0 <= col < self._N:
                             if self._data[row + col * self._N]:
                                 num += 1
-                        index = i + j * self._N
-                        if (num == 3 and not self._data[index]) \
-                                or ((num < 3 or num > 4) and self._data[index]):
-                            need_update_index.push_back(index)
+                index = i + j * self._N
+                if (self._data[index] == 0 and num == 3) \
+                        or (self._data[index] > 0 and (num < 3 or num > 4)):
+                    need_update_index.push_back(index)
         for i in range(need_update_index.size()):
             index = need_update_index[i]
             self._data[index] = 255 - self._data[index]
